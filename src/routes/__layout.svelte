@@ -1,0 +1,7 @@
+<style>
+	:global(html, body) {
+		margin: 0;
+		min-height: 100%;
+		padding: 0;
+	}
+</style>
