@@ -1,5 +1,17 @@
 <script lang="ts">
+	import Poem from '$lib/Poem/Poem.svelte';
 </script>
 
-<h1>Reimemonster</h1>
-<p>Demo will follow...</p>
+<main>
+	<Poem />
+	<h1>Reimemonster</h1>
+</main>
+
+<style>
+	main {
+		display: flex;
+	}
+	main > * {
+		flex: 1;
+	}
+</style>
