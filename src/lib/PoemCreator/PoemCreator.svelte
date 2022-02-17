@@ -1,9 +1,14 @@
 <script lang="ts">
+	import PoemDropdown from '$lib/PoemDropdown/PoemDropdown.svelte';
+
 	let content = '';
 </script>
 
 <div class="root">
-	<input type="text" name="title" />
+	<div class="title">
+		<input type="text" name="title" />
+		<PoemDropdown />
+	</div>
 	<div class="poem" contenteditable>{content}</div>
 </div>
 
@@ -14,8 +19,12 @@
 		flex-direction: column;
 		gap: 1em;
 	}
+	.title {
+		display: flex;
+	}
 
 	input[name='title'] {
+		flex: 1;
 		font: var(--poem-title-font);
 		border: 0;
 		border-bottom: 1px solid rgba(0, 0, 0, 0.2);
