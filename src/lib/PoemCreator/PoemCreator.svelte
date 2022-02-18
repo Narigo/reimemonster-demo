@@ -19,6 +19,7 @@
 		flex-direction: column;
 		gap: 1em;
 	}
+
 	.title {
 		display: flex;
 	}
@@ -29,6 +30,7 @@
 		border: 0;
 		border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 	}
+
 	input[name='title']:focus {
 		border-bottom: 2px solid rgba(0, 0, 0, 1);
 		margin-bottom: -1px;

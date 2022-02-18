@@ -1,8 +1,8 @@
 <details>
 	<summary>∨</summary>
 	<ul>
-		<li>Other poem title</li>
-		<li>Another poem title</li>
+		<li><button type="button">Other poem title</button></li>
+		<li><button type="button">Another poem title</button></li>
 	</ul>
 </details>
 
@@ -14,12 +14,17 @@
 		justify-content: center;
 		list-style: none;
 		height: 2em;
-        transform: rotate(-90deg);
+		transform: rotate(-90deg);
+	}
+	summary:focus {
+		border: 2px solid #000;
+		outline: none;
 	}
 	details {
 		align-items: center;
 		display: flex;
-		justify-content: stretch;
+		flex-shrink: 0;
+		justify-content: center;
 		height: 2em;
 		position: relative;
 		width: 2em;
