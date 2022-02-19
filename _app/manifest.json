@@ -1,51 +1,66 @@
 {
   ".svelte-kit/runtime/client/start.js": {
-    "file": "start-f4045705.js",
+    "file": "start-562f294c.js",
     "src": ".svelte-kit/runtime/client/start.js",
     "isEntry": true,
     "imports": [
-      "_vendor-f0095a1c.js"
+      "_vendor-cf40a560.js"
     ],
     "dynamicImports": [
       "src/routes/__layout.svelte",
       ".svelte-kit/runtime/components/error.svelte",
-      "src/routes/index.svelte"
+      "src/routes/index.svelte",
+      "src/routes/create.svelte"
     ]
   },
   "src/routes/__layout.svelte": {
-    "file": "pages/__layout.svelte-b2d22bd1.js",
+    "file": "pages/__layout.svelte-d12795a3.js",
     "src": "src/routes/__layout.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_vendor-f0095a1c.js"
+      "_vendor-cf40a560.js"
     ],
     "css": [
-      "assets/pages/__layout.svelte-331253ca.css"
+      "assets/pages/__layout.svelte-bcca541e.css"
     ]
   },
   ".svelte-kit/runtime/components/error.svelte": {
-    "file": "error.svelte-60b5f229.js",
+    "file": "error.svelte-5b131ebe.js",
     "src": ".svelte-kit/runtime/components/error.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_vendor-f0095a1c.js"
+      "_vendor-cf40a560.js"
     ]
   },
   "src/routes/index.svelte": {
-    "file": "pages/index.svelte-e38e5d36.js",
+    "file": "pages/index.svelte-5c2cc07b.js",
     "src": "src/routes/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_vendor-f0095a1c.js"
+      "_vendor-cf40a560.js"
     ],
     "css": [
-      "assets/pages/index.svelte-b5ada500.css"
+      "assets/pages/index.svelte-0c18b0f5.css",
+      "assets/PoemCreator.svelte_svelte_type_style_lang-9af808a5.css"
     ]
   },
-  "_vendor-f0095a1c.js": {
-    "file": "chunks/vendor-f0095a1c.js"
+  "src/routes/create.svelte": {
+    "file": "pages/create.svelte-6461104a.js",
+    "src": "src/routes/create.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_vendor-cf40a560.js"
+    ],
+    "css": [
+      "assets/pages/create.svelte-6cfc77d3.css",
+      "assets/PoemCreator.svelte_svelte_type_style_lang-9af808a5.css"
+    ]
+  },
+  "_vendor-cf40a560.js": {
+    "file": "chunks/vendor-cf40a560.js"
   }
 }

@@ -6,32 +6,34 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta http-equiv="content-security-policy" content="">
 	<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-bcca541e.css">
-	<link rel="stylesheet" href="/_app/assets/pages/index.svelte-0c18b0f5.css">
+	<link rel="stylesheet" href="/_app/assets/pages/create.svelte-6cfc77d3.css">
 	<link rel="stylesheet" href="/_app/assets/PoemCreator.svelte_svelte_type_style_lang-9af808a5.css">
 	<link rel="modulepreload" href="/_app/start-562f294c.js">
 	<link rel="modulepreload" href="/_app/chunks/vendor-cf40a560.js">
 	<link rel="modulepreload" href="/_app/pages/__layout.svelte-d12795a3.js">
-	<link rel="modulepreload" href="/_app/pages/index.svelte-5c2cc07b.js">
+	<link rel="modulepreload" href="/_app/pages/create.svelte-6461104a.js">
 	</head>
 	<body>
 		<div id="svelte">
 
 
-<main class="svelte-1nfueh9"><section class="svelte-1nfueh9"><h1 class="svelte-1nfueh9">Reimemonster</h1>
-		<details><summary>Wortvorschläge</summary>
-			<div><p>Keine Wortvorschläge vorhanden.</p></div></details>
-		<details><summary>Bedienungsanleitung</summary>
-			<div><p>Während Du schreibst, siehst Du die Anzahl der Silben am Ende der jeweiligen Zeile.</p>
-				<p>Markierst Du ein Wort erscheinen hier Reimvorschläge.</p>
-				<p>Dein Gedicht speichert sich automatisch auf dem ausgewählten Slot.</p></div></details></section>
-	<a href="/create" class="svelte-1nfueh9">Create a poem</a>
+<main class="svelte-1u0bgv3"><section class="svelte-uscdln"><div class="svelte-1cyr1az">
+	<input type="text" name="title" class="svelte-1cyr1az" value="">
+	<details class="svelte-rn1jd0"><summary class="svelte-rn1jd0">∨</summary>
+	<ul class="svelte-rn1jd0"><li><button type="button">Other poem title</button></li>
+		<li><button type="button">Another poem title</button></li></ul>
+</details>
+</div>
+	<div contenteditable class="svelte-uscdln"></div>
+</section>
+    <a href="/">Back to index</a>
 </main>
 
 
-		<script type="module" data-hydrate="1if6o9z">
+		<script type="module" data-hydrate="o84i39">
 		import { start } from "/_app/start-562f294c.js";
 		start({
-			target: document.querySelector('[data-hydrate="1if6o9z"]').parentNode,
+			target: document.querySelector('[data-hydrate="o84i39"]').parentNode,
 			paths: {"base":"","assets":""},
 			session: {},
 			route: true,
@@ -42,9 +44,9 @@
 				error: null,
 				nodes: [
 					import("/_app/pages/__layout.svelte-d12795a3.js"),
-						import("/_app/pages/index.svelte-5c2cc07b.js")
+						import("/_app/pages/create.svelte-6461104a.js")
 				],
-				url: new URL("http://sveltekit-prerender/"),
+				url: new URL("http://sveltekit-prerender/create"),
 				params: {}
 			}
 		});
