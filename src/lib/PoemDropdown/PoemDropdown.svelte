@@ -23,10 +23,9 @@
 	details {
 		align-items: center;
 		display: flex;
-		flex-shrink: 0;
+		flex: 0;
 		justify-content: center;
 		height: 2em;
-		position: relative;
 		width: 2em;
 	}
 	details[open] > summary {
@@ -42,8 +41,8 @@
 		margin: 0;
 		padding: 1em;
 		position: absolute;
+		left: 0;
 		right: 0;
 		top: 2em;
-		width: calc(50vw - 3em);
 	}
 </style>
