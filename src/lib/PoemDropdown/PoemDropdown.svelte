@@ -1,9 +1,12 @@
-<details>
+<script lang="ts">
+	export let open: boolean = false;
+</script>
+
+<details bind:open>
 	<summary>∨</summary>
-	<ul>
-		<li><button type="button">Other poem title</button></li>
-		<li><button type="button">Another poem title</button></li>
-	</ul>
+	<div>
+		<slot />
+	</div>
 </details>
 
 <style>
@@ -14,6 +17,7 @@
 		justify-content: center;
 		list-style: none;
 		height: 2em;
+		width: 2em;
 		transform: rotate(-90deg);
 	}
 	summary:focus {
@@ -25,24 +29,8 @@
 		display: flex;
 		flex: 0;
 		justify-content: center;
-		height: 2em;
-		width: 2em;
 	}
 	details[open] > summary {
 		transform: rotate(0deg);
-	}
-	details[open] > ul {
-		background-color: var(--background-color);
-		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-		display: flex;
-		flex-direction: column;
-		gap: 1em;
-		list-style: none;
-		margin: 0;
-		padding: 1em;
-		position: absolute;
-		left: 0;
-		right: 0;
-		top: 2em;
 	}
 </style>

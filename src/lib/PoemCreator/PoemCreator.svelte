@@ -1,5 +1,6 @@
 <script lang="ts">
 	import PoemDropdown from '$lib/PoemDropdown/PoemDropdown.svelte';
+	import PoemDropdownList from '$lib/PoemDropdown/PoemDropdownList/PoemDropdownList.svelte';
 	import PoemTitle from '$lib/PoemTitle/PoemTitle.svelte';
 
 	let content = '';
@@ -7,7 +8,9 @@
 
 <section>
 	<PoemTitle>
-		<PoemDropdown slot="right" />
+		<PoemDropdown slot="right">
+			<PoemDropdownList />
+		</PoemDropdown>
 	</PoemTitle>
 	<div contenteditable>{content}</div>
 </section>
