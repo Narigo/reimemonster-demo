@@ -20,16 +20,19 @@
 		width: 2em;
 		transform: rotate(-90deg);
 	}
+
 	summary:focus {
 		border: 2px solid #000;
 		outline: none;
 	}
+
 	details {
 		align-items: center;
 		display: flex;
 		flex: 0;
 		justify-content: center;
 	}
+
 	details[open] > summary {
 		transform: rotate(0deg);
 	}

@@ -17,5 +17,6 @@
 		left: 0;
 		right: 0;
 		top: 2em;
+		z-index: 1;
 	}
 </style>
