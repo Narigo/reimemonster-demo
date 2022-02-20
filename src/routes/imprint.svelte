@@ -1,10 +1,12 @@
-<script>
-	import PoemCreator from '$lib/PoemCreator/PoemCreator.svelte';
-</script>
-
 <main>
-	<PoemCreator />
-	<a href="/">Back to index</a>
+	<h2>Impressum</h2>
+	<section>
+		<p>Jörn Bernhardt</p>
+		<p>
+			Goethestr. 46<br />
+			84032 Landshut
+		</p>
+	</section>
 </main>
 
 <style>

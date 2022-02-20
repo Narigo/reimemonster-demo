@@ -1,12 +1,15 @@
-<header>hello</header>
+<script>
+	import MainNavigation from '$lib/MainNavigation/MainNavigation.svelte';
+</script>
 
-<main>
-	<slot />
-</main>
+<MainNavigation />
+
+<slot />
 
 <style>
 	:root {
 		--background-color: #fff;
+		--page-width: 800px;
 		--poem-title-font: small-caps 20px/1.7 Merriweather;
 		--poem-content-font: 24px/1.7 'Loved by the King';
 		--default-font: 16px/1.5 Merriweather;
@@ -22,10 +25,5 @@
 
 	:global(*, *:before, *:after) {
 		box-sizing: border-box;
-	}
-
-	main {
-		margin: 0 auto;
-		max-width: 800px;
 	}
 </style>
