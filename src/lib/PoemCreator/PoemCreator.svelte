@@ -20,11 +20,13 @@
 		display: flex;
 		flex: 1;
 		flex-direction: column;
-		gap: 1em;
+		gap: 2em;
 	}
 
 	div {
 		border: 1px solid rgba(0, 0, 0, 0.2);
+		font: var(--poem-content-font);
+		letter-spacing: 2px;
 		padding: 2em;
 		width: 100%;
 	}

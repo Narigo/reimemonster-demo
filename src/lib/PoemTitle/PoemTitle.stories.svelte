@@ -21,6 +21,22 @@
 	</PoemTitle>
 </Template>
 
+<Template id="left-and-right" let:args>
+	<PoemTitle {...args}>
+		<div slot="left">left</div>
+		<div slot="right">right</div>
+	</PoemTitle>
+</Template>
+
+<Template id="with-gap" let:args>
+	<div style="--poem-title-gap: 2em;">
+		<PoemTitle {...args}>
+			<div slot="left">left</div>
+			<div slot="right">right</div>
+		</PoemTitle>
+	</div>
+</Template>
+
 <Story
 	name="Regular"
 	args={{
@@ -46,6 +62,22 @@
 <Story
 	name="Right"
 	template="right"
+	args={{
+		value: ''
+	}}
+/>
+
+<Story
+	name="Left and Right"
+	template="left-and-right"
+	args={{
+		value: ''
+	}}
+/>
+
+<Story
+	name="With gap"
+	template="with-gap"
 	args={{
 		value: ''
 	}}

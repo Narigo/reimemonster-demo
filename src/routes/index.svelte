@@ -1,17 +1,11 @@
 <script lang="ts">
-	import PoemCreator from '$lib/PoemCreator/PoemCreator.svelte';
+	import { base } from '$app/paths';
 </script>
 
-<main>
+<div>
 	<section>
 		<h1>Reimemonster</h1>
-		<details>
-			<summary>Wortvorschläge</summary>
-			<div>
-				<p>Keine Wortvorschläge vorhanden.</p>
-			</div>
-		</details>
-		<details>
+		<details open>
 			<summary>Bedienungsanleitung</summary>
 			<div>
 				<p>Während Du schreibst, siehst Du die Anzahl der Silben am Ende der jeweiligen Zeile.</p>
@@ -20,18 +14,18 @@
 			</div>
 		</details>
 	</section>
-	<a href="/create">Create a poem</a>
-</main>
+	<a href="{base}/create">Create a poem</a>
+</div>
 
 <style>
-	main {
+	div {
 		display: flex;
 		flex-direction: column;
 		gap: 2em;
 		padding: 2em;
 	}
 
-	main > * {
+	div > * {
 		flex: 1;
 	}
 

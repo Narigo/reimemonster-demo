@@ -15,6 +15,7 @@
 
 	div {
 		display: flex;
+		font: var(--poem-content-font);
 		position: relative;
 		gap: var(--poem-title-gap);
 	}
