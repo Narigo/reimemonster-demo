@@ -28,7 +28,6 @@
 		</PoemDropdown>
 	</PoemTitle>
 	<div class="poem">
-		<div class="input" contenteditable on:input={onInput} />
 		<ol class="syllables">
 			{#each syllables as currentLine}
 				<li class={currentLine.okay ? 'okay' : 'different'}>
@@ -36,6 +35,10 @@
 				</li>
 			{/each}
 		</ol>
+		<div class="input-wrapper">
+			<div class="input" contenteditable on:input={onInput} />
+		</div>
+		<div class="padding-right" />
 	</div>
 </section>
 
@@ -48,36 +51,58 @@
 	}
 
 	.poem {
-		display: flex;
-		flex-direction: row;
+		display: grid;
+		grid-template-columns: 2em 1fr 2em;
 		font: var(--poem-content-font);
 		letter-spacing: 2px;
 		position: relative;
-		overflow-x: scroll;
-		text-overflow: ellipsis;
+		border: 1px solid rgba(0, 0, 0, 0.2);
+		padding: 2em 1px;
+	}
+
+	.poem:focus-within {
+		border: 2px solid rgba(0, 0, 0, 1);
+		padding: calc(2em - 1px) 0 calc(2em - 1px) 0;
+		outline: none;
 	}
 
 	.syllables {
+		align-items: center;
+		background-color: white;
+		display: flex;
+		flex: 0 0 auto;
+		flex-direction: column;
 		color: rgba(0, 0, 0, 0.2);
 		list-style: none;
-		padding: 1em;
-		position: absolute;
+		margin: 0;
+		padding: 0;
+		width: 2em;
 	}
+
+	.syllables li {
+		margin: 0;
+		text-align: center;
+	}
+
 	.different {
-		color: rgba(255, 0, 0, 0.2);
+		color: rgba(255, 51, 34, 0.4);
+	}
+
+	.padding-right {
+		flex: 0 0 auto;
+		width: 2em;
+	}
+
+	.input-wrapper {
+		display: flex;
+		overflow-x: auto;
 	}
 
 	.input {
-		border: 1px solid rgba(0, 0, 0, 0.2);
-		padding: 2em;
-		flex: 1;
-		overflow-x: scroll;
-		text-overflow: ellipsis;
+		flex: 1 0 auto;
 	}
 
 	.input:focus {
-		border: 2px solid rgba(0, 0, 0, 1);
-		padding: calc(2em - 1px);
 		outline: none;
 	}
 </style>
