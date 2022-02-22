@@ -4,36 +4,45 @@
 		<meta charset="utf-8" />
 		<link rel="icon" href="/favicon.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="./fonts/fonts.css" />
 		<meta http-equiv="content-security-policy" content="">
-	<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-bcca541e.css">
-	<link rel="stylesheet" href="/_app/assets/pages/create.svelte-6cfc77d3.css">
-	<link rel="stylesheet" href="/_app/assets/PoemCreator.svelte_svelte_type_style_lang-9af808a5.css">
-	<link rel="modulepreload" href="/_app/start-562f294c.js">
-	<link rel="modulepreload" href="/_app/chunks/vendor-cf40a560.js">
-	<link rel="modulepreload" href="/_app/pages/__layout.svelte-d12795a3.js">
-	<link rel="modulepreload" href="/_app/pages/create.svelte-6461104a.js">
+	<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-d58010d3.css">
+	<link rel="stylesheet" href="/_app/assets/pages/create/index.svelte-ce55ec21.css">
+	<link rel="modulepreload" href="/_app/start-7f778708.js">
+	<link rel="modulepreload" href="/_app/chunks/vendor-1a0d3c44.js">
+	<link rel="modulepreload" href="/_app/chunks/paths-4b3c6e7e.js">
+	<link rel="modulepreload" href="/_app/pages/__layout.svelte-6ed78440.js">
+	<link rel="modulepreload" href="/_app/pages/create/index.svelte-0e7379df.js">
 	</head>
 	<body>
 		<div id="svelte">
 
 
-<main class="svelte-1u0bgv3"><section class="svelte-uscdln"><div class="svelte-1cyr1az">
-	<input type="text" name="title" class="svelte-1cyr1az" value="">
-	<details class="svelte-rn1jd0"><summary class="svelte-rn1jd0">∨</summary>
-	<ul class="svelte-rn1jd0"><li><button type="button">Other poem title</button></li>
-		<li><button type="button">Another poem title</button></li></ul>
+<header><nav class="svelte-x3ooel"><ul class="svelte-x3ooel"><li><a href="/">Über</a></li>
+			<li><a href="/create">Gedicht schreiben</a></li>
+			<li><a href="/imprint">Impressum</a></li></ul></nav>
+</header>
+
+<main class="svelte-78i28p"><section class="svelte-1gor2zx"><div class="svelte-iop7bq">
+	<input type="text" name="title" class="svelte-iop7bq" value="">
+	<details class="svelte-17f9h59"><summary class="svelte-17f9h59">∨</summary>
+	<div><ul class="svelte-15nwzy1"><li><button type="button">Other poem title</button></li>
+	<li><button type="button">Another poem title</button></li>
+</ul></div>
 </details>
 </div>
-	<div contenteditable class="svelte-uscdln"></div>
+	<div class="poem svelte-1gor2zx"><ol class="syllables svelte-1gor2zx"></ol>
+		<div class="input-wrapper svelte-1gor2zx"><div class="input svelte-1gor2zx" contenteditable></div></div>
+		<div class="padding-right svelte-1gor2zx"></div></div>
 </section>
-    <a href="/">Back to index</a>
+	<a href="/">Back to index</a>
 </main>
 
 
-		<script type="module" data-hydrate="o84i39">
-		import { start } from "/_app/start-562f294c.js";
+		<script type="module" data-hydrate="1prkf1s">
+		import { start } from "/_app/start-7f778708.js";
 		start({
-			target: document.querySelector('[data-hydrate="o84i39"]').parentNode,
+			target: document.querySelector('[data-hydrate="1prkf1s"]').parentNode,
 			paths: {"base":"","assets":""},
 			session: {},
 			route: true,
@@ -43,8 +52,8 @@
 				status: 200,
 				error: null,
 				nodes: [
-					import("/_app/pages/__layout.svelte-d12795a3.js"),
-						import("/_app/pages/create.svelte-6461104a.js")
+					import("/_app/pages/__layout.svelte-6ed78440.js"),
+						import("/_app/pages/create/index.svelte-0e7379df.js")
 				],
 				url: new URL("http://sveltekit-prerender/create"),
 				params: {}
