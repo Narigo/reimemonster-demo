@@ -4,7 +4,6 @@
 
 <main>
 	<PoemCreator />
-	<a href="/">Back to index</a>
 </main>
 
 <style>
