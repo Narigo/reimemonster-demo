@@ -5,6 +5,7 @@
 	import { countSyllables } from 'reimemonster';
 
 	let syllables: { syllables: number; okay: boolean }[] = [];
+	let inputField;
 
 	function onInput(e) {
 		let acc = [];
@@ -19,6 +20,10 @@
 			});
 		syllables = acc;
 	}
+
+	function focusInput() {
+		inputField.focus();
+	}
 </script>
 
 <section>
@@ -27,7 +32,7 @@
 			<PoemDropdownList />
 		</PoemDropdown>
 	</PoemTitle>
-	<div class="poem">
+	<div class="poem" on:focus={focusInput}>
 		<ol class="syllables">
 			{#each syllables as currentLine}
 				<li class={currentLine.okay ? 'okay' : 'different'}>
@@ -36,7 +41,7 @@
 			{/each}
 		</ol>
 		<div class="input-wrapper">
-			<div class="input" contenteditable on:input={onInput} />
+			<div class="input" contenteditable on:input={onInput} bind:this={inputField} />
 		</div>
 		<div class="padding-right" />
 	</div>
