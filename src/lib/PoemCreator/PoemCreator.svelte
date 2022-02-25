@@ -1,28 +1,51 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import PoemDropdown from '$lib/PoemDropdown/PoemDropdown.svelte';
 	import PoemDropdownList from '$lib/PoemDropdown/PoemDropdownList/PoemDropdownList.svelte';
 	import PoemTitle from '$lib/PoemTitle/PoemTitle.svelte';
-	import { countSyllables } from 'reimemonster';
+	import { lastWordTyped, poem, syllables } from '$lib/store/poem.store';
 
-	let syllables: { syllables: number; okay: boolean }[] = [];
-	let inputField;
+	let inputField: HTMLDivElement | null = null;
+	let inputIsFocused: boolean = false;
 
-	function onInput(e) {
-		let acc = [];
-		let previous = 0;
-		e.target.innerText
-			.trim()
-			.split(/\n/)
-			.forEach((element) => {
-				const syllables = countSyllables(element);
-				acc.push({ syllables, okay: previous === 0 || previous === syllables });
-				previous = syllables;
-			});
-		syllables = acc;
+	onMount(() => {
+		console.log({ inputField, type: typeof inputField });
+	});
+
+	function findLastWord() {
+		const selection = window.getSelection();
+		const range = selection.getRangeAt(0);
+		const textNode = range.commonAncestorContainer;
+		if (textNode.parentNode === inputField) {
+			const text = textNode.textContent;
+			const start = text.slice(0, range.startOffset);
+			const end = text.slice(range.startOffset);
+			const currentWordFront = /\b(\w*)$/.exec(start);
+			const currentWordBack = /^(\w*)\b/.exec(end);
+			$lastWordTyped = `${currentWordFront ? currentWordFront[1] : ''}${
+				currentWordBack ? currentWordBack[1] : ''
+			}`;
+		}
+	}
+
+	const onKeyUp: svelte.JSX.KeyboardEventHandler<HTMLDivElement> = (e) => {
+		$poem = inputField.innerText;
+		findLastWord();
+	};
+
+	function onBlur() {
+		inputIsFocused = false;
+	}
+
+	function onFocus() {
+		inputIsFocused = true;
+		findLastWord();
 	}
 
 	function focusInput() {
-		inputField.focus();
+		if (!inputIsFocused) {
+			inputField.focus();
+		}
 	}
 </script>
 
@@ -32,19 +55,27 @@
 			<PoemDropdownList />
 		</PoemDropdown>
 	</PoemTitle>
-	<div class="poem" on:focus={focusInput}>
+	<div class="poem" on:click={focusInput}>
 		<ol class="syllables">
-			{#each syllables as currentLine}
+			{#each $syllables as currentLine}
 				<li class={currentLine.okay ? 'okay' : 'different'}>
 					{currentLine.syllables}
 				</li>
 			{/each}
 		</ol>
 		<div class="input-wrapper">
-			<div class="input" contenteditable on:input={onInput} bind:this={inputField} />
+			<div
+				class="input"
+				contenteditable
+				bind:this={inputField}
+				on:blur={onBlur}
+				on:focus={onFocus}
+				on:keyup={onKeyUp}
+			/>
 		</div>
 		<div class="padding-right" />
 	</div>
+	<div>{$lastWordTyped}</div>
 </section>
 
 <style>
@@ -104,7 +135,12 @@
 	}
 
 	.input {
+		border: 0;
 		flex: 1 0 auto;
+		font: var(--poem-content-font);
+		letter-spacing: 2px;
+		overflow: hidden;
+		white-space: nowrap;
 	}
 
 	.input:focus {
