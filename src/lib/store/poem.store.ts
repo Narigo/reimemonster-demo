@@ -18,3 +18,5 @@ export const syllables = derived(poem, (value) => {
 		});
 	return acc;
 });
+
+export const wordRhymeStore = writable({});

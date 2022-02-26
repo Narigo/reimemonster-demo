@@ -4,6 +4,7 @@
 	import PoemDropdownList from '$lib/PoemDropdown/PoemDropdownList/PoemDropdownList.svelte';
 	import PoemTitle from '$lib/PoemTitle/PoemTitle.svelte';
 	import { lastWordTyped, poem, syllables } from '$lib/store/poem.store';
+	import RhymeSuggestion from '$lib/RhymeSuggestion/RhymeSuggestion.svelte';
 
 	let inputField: HTMLDivElement | null = null;
 	let inputIsFocused: boolean = false;
@@ -75,7 +76,7 @@
 		</div>
 		<div class="padding-right" />
 	</div>
-	<div>{$lastWordTyped}</div>
+	<RhymeSuggestion word={$lastWordTyped} />
 </section>
 
 <style>
