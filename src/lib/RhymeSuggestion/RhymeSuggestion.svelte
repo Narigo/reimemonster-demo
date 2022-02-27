@@ -13,12 +13,16 @@
 	const timeToWait = 750;
 	let timer;
 	let debouncedPost: (word: string) => void = (word) => {
-		clearTimeout(timer);
-		timer = setTimeout(() => {
-			console.log('posting', { word });
-			isLoading = true;
-			backgroundWorker?.postMessage(word);
-		}, timeToWait);
+		if ($wordRhymeStore[word] === undefined) {
+			clearTimeout(timer);
+			timer = setTimeout(() => {
+				console.log('posting', { word });
+				isLoading = true;
+				backgroundWorker?.postMessage(word);
+			}, timeToWait);
+		} else {
+			suggestedWords = $wordRhymeStore[word];
+		}
 	};
 
 	$: debouncedPost(word);
