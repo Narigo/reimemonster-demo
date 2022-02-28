@@ -13,15 +13,15 @@
 	const timeToWait = 750;
 	let timer;
 	let debouncedPost: (word: string) => void = (word) => {
-		if ($wordRhymeStore[word] === undefined) {
+		const normalizedWord = word.toLowerCase();
+		if ($wordRhymeStore[normalizedWord] === undefined) {
 			clearTimeout(timer);
 			timer = setTimeout(() => {
-				console.log('posting', { word });
 				isLoading = true;
-				backgroundWorker?.postMessage(word);
+				backgroundWorker?.postMessage(normalizedWord);
 			}, timeToWait);
 		} else {
-			suggestedWords = $wordRhymeStore[word];
+			suggestedWords = $wordRhymeStore[normalizedWord];
 		}
 	};
 
@@ -58,4 +58,12 @@
 </div>
 
 <style>
+	ul {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1em;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
 </style>
