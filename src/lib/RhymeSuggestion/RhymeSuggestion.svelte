@@ -6,7 +6,7 @@
 
 	export let word: string = '';
 
-	let isLoading = true;
+	let isLoading = false;
 	let suggestedWords = [];
 
 	let backgroundWorker: Worker | null = null;
@@ -25,7 +25,11 @@
 		}
 	};
 
-	$: debouncedPost(word);
+	$: {
+		if (word !== '') {
+			debouncedPost(word);
+		}
+	}
 
 	onMount(() => {
 		const workerListener = (event) => {
