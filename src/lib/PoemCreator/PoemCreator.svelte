@@ -17,15 +17,18 @@
 		const selection = window.getSelection();
 		const range = selection.getRangeAt(0);
 		const textNode = range.commonAncestorContainer;
-		if (textNode.parentNode === inputField) {
+		if (textNode.parentNode === inputField || textNode.parentNode.parentNode === inputField) {
 			const text = textNode.textContent;
 			const start = text.slice(0, range.startOffset);
 			const end = text.slice(range.startOffset);
 			const currentWordFront = /\b(\w*)$/.exec(start);
 			const currentWordBack = /^(\w*)\b/.exec(end);
-			$lastWordTyped = `${currentWordFront ? currentWordFront[1] : ''}${
+			const possibleWord = `${currentWordFront ? currentWordFront[1] : ''}${
 				currentWordBack ? currentWordBack[1] : ''
 			}`;
+			if (possibleWord !== '') {
+				$lastWordTyped = possibleWord;
+			}
 		}
 	}
 
