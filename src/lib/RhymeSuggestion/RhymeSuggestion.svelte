@@ -62,6 +62,19 @@
 </div>
 
 <style>
+	span {
+		animation: loading forwards 500ms;
+	}
+
+	@keyframes loading {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+
 	ul {
 		display: flex;
 		flex-wrap: wrap;
