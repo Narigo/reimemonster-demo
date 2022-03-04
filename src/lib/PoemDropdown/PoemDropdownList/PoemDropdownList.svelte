@@ -1,6 +1,14 @@
+<script lang="ts">
+	import { poems } from '$lib/store/poem.store';
+</script>
+
 <ul>
-	<li><button type="button">Other poem title</button></li>
-	<li><button type="button">Another poem title</button></li>
+	<li><button type="button">Save poem</button></li>
+	{#each $poems as poem}
+		<li><button type="button">{poem.title}</button></li>
+	{:else}
+		<li>No saved poems found!</li>
+	{/each}
 </ul>
 
 <style>

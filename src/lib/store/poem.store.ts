@@ -3,12 +3,19 @@ import { derived, writable } from 'svelte/store';
 
 export const lastWordTyped = writable('');
 
-export const poem = writable('');
+export const poem = writable({ title: '', text: '' });
 
-export const syllables = derived(poem, (value) => {
+export type Poem = {
+	title: string;
+	text: string;
+};
+
+export const poems = writable<Poem[]>([]);
+
+export const syllables = derived(poem, ({ text }) => {
 	const acc: { syllables: number; okay: boolean }[] = [];
 	let previous = 0;
-	value
+	text
 		.trim()
 		.split(/\n/)
 		.forEach((element) => {
