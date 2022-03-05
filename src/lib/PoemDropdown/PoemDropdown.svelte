@@ -30,6 +30,7 @@
 		align-items: center;
 		display: flex;
 		flex: 0;
+		font: var(--poem-title-font);
 		justify-content: center;
 	}
 

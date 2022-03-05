@@ -3,7 +3,6 @@
 </script>
 
 <ul>
-	<li><button type="button">Save poem</button></li>
 	{#each $poems as poem}
 		<li><button type="button">{poem.title}</button></li>
 	{:else}
