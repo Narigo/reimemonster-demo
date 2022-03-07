@@ -1,8 +1,11 @@
 <script lang="ts">
 	import { poem } from '$lib/store/poem.store';
+	import { createEventDispatcher } from 'svelte';
+
+	const dispatch = createEventDispatcher();
 
 	function savePoem() {
-		console.log('saving as new poem', $poem);
+		dispatch('save', $poem);
 	}
 </script>
 

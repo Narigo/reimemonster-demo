@@ -6,15 +6,20 @@
 	import RhymeSuggestion from '$lib/RhymeSuggestion/RhymeSuggestion.svelte';
 	import PoemInput from './PoemInput/PoemInput.svelte';
 	import SavePoemButton from './SavePoemButton/SavePoemButton.svelte';
+
+	function savePoem(event) {
+		const poem = event.details;
+		console.log('saving as new poem', poem);
+	}
 </script>
 
 <section>
 	<PoemTitle>
 		<div slot="right">
-			<PoemDropdown>
+			<PoemDropdown on:select>
 				<PoemDropdownList />
 			</PoemDropdown>
-			<SavePoemButton />
+			<SavePoemButton on:save={savePoem} />
 		</div>
 	</PoemTitle>
 	<PoemInput />

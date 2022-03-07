@@ -1,5 +1,9 @@
 <script lang="ts">
-	export let value: string = '';
+	import { poem } from '$lib/store/poem.store';
+
+	let value: string = '';
+
+	$: $poem = { ...$poem, title: value };
 </script>
 
 <div>
