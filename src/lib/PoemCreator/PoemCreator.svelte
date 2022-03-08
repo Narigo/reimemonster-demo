@@ -2,14 +2,14 @@
 	import PoemDropdown from '$lib/PoemDropdown/PoemDropdown.svelte';
 	import PoemDropdownList from '$lib/PoemDropdown/PoemDropdownList/PoemDropdownList.svelte';
 	import PoemTitle from '$lib/PoemTitle/PoemTitle.svelte';
-	import { lastWordTyped } from '$lib/store/poem.store';
+	import { lastWordTyped, poems } from '$lib/store/poem.store';
 	import RhymeSuggestion from '$lib/RhymeSuggestion/RhymeSuggestion.svelte';
 	import PoemInput from './PoemInput/PoemInput.svelte';
 	import SavePoemButton from './SavePoemButton/SavePoemButton.svelte';
 
 	function savePoem(event) {
 		const poem = event.details;
-		console.log('saving as new poem', poem);
+		$poems = [...$poems, poem];
 	}
 </script>
 
