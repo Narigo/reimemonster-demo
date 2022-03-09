@@ -8,7 +8,7 @@
 	import SavePoemButton from './SavePoemButton/SavePoemButton.svelte';
 
 	function savePoem(event) {
-		const poem = event.details;
+		const poem = event.detail;
 		$poems = [...$poems, poem];
 	}
 </script>
