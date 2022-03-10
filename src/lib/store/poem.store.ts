@@ -1,16 +1,49 @@
+import { browser } from '$app/env';
 import { countSyllables } from 'reimemonster';
-import { derived, writable } from 'svelte/store';
+import { derived, get, Writable, writable } from 'svelte/store';
 
 export const lastWordTyped = writable('');
-
-export const poem = writable({ title: '', text: '' });
 
 export type Poem = {
 	title: string;
 	text: string;
 };
 
-export const poems = writable<Poem[]>([]);
+export const poems: Writable<Poem[]> = (function () {
+	const key = 'poems';
+	const internalStore = writable<Poem[]>([]);
+
+	const setter = (value: Poem[]) => {
+		if (browser) {
+			window.localStorage.setItem(key, JSON.stringify(value));
+		}
+		return internalStore.set(value);
+	};
+
+	const subscribe = internalStore.subscribe;
+
+	try {
+		if (browser) {
+			const initialValue = JSON.parse(window.localStorage.getItem(key) || '[]');
+			console.log({ initialValue });
+			setter(initialValue);
+		}
+	} catch {
+		// can't parse local storage -> keep empty array
+	}
+
+	return {
+		set: setter,
+		subscribe,
+		update(updater) {
+			const value = updater(get(internalStore));
+			console.log('updated called');
+			return setter(value);
+		}
+	};
+})();
+
+export const poem = writable({ title: '', text: '' });
 
 export const syllables = derived(poem, ({ text }) => {
 	const acc: { syllables: number; okay: boolean }[] = [];
