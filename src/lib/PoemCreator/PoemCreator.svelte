@@ -7,6 +7,9 @@
 	import PoemInput from './PoemInput/PoemInput.svelte';
 	import SavePoemButton from './SavePoemButton/SavePoemButton.svelte';
 
+	function loadPoem(event) {
+		console.log('loading', event);
+	}
 	function savePoem(event) {
 		const poem = event.detail;
 		$poems = [...$poems, poem];
@@ -17,7 +20,7 @@
 	<PoemTitle>
 		<div slot="right">
 			<PoemDropdown on:select>
-				<PoemDropdownList />
+				<PoemDropdownList on:load={loadPoem} />
 			</PoemDropdown>
 			<SavePoemButton on:save={savePoem} />
 		</div>

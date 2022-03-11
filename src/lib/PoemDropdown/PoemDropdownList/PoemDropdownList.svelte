@@ -1,10 +1,17 @@
 <script lang="ts">
-	import { poems } from '$lib/store/poem.store';
+	import { Poem, poems } from '$lib/store/poem.store';
+	import { createEventDispatcher } from 'svelte';
+
+	const dispatch = createEventDispatcher();
+
+	function loadPoem(poem: Poem) {
+		dispatch('load', poem);
+	}
 </script>
 
 <ul>
 	{#each $poems as poem}
-		<li><button type="button">{poem.title}</button></li>
+		<li><button type="button" on:click={() => loadPoem(poem)}>{poem.title}</button></li>
 	{:else}
 		<li>No saved poems found!</li>
 	{/each}
