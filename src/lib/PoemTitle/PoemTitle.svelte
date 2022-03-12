@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { poem } from '$lib/store/poem.store';
 
-	let value: string = '';
+	let value: string = $poem.title;
 
 	$: $poem = { ...$poem, title: value };
 </script>
