@@ -1,9 +1,14 @@
 <script lang="ts">
 	import { poem } from '$lib/store/poem.store';
+	import { onDestroy } from 'svelte';
 
 	let value: string = $poem.title;
 
 	$: $poem = { ...$poem, title: value };
+	const unsubscribe = poem.subscribe((p) => (value = p.title));
+	onDestroy(() => {
+		unsubscribe();
+	});
 </script>
 
 <div>
