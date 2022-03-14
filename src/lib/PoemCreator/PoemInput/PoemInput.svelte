@@ -1,46 +1,42 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { lastWordTyped, poem, syllables } from '$lib/store/poem.store';
+	import { onDestroy } from 'svelte';
 
-	let inputField: HTMLDivElement | null = null;
+	let inputField: HTMLTextAreaElement | null = null;
 	let inputIsFocused: boolean = false;
+	let text: string = $poem.text;
 
-	onMount(() => {
-		console.log({ inputField, type: typeof inputField });
+	const unsubscribe = poem.subscribe((p) => (text = p.text));
+	onDestroy(() => {
+		unsubscribe();
 	});
 
-	function findLastWord() {
-		const selection = window.getSelection();
-		const range = selection.getRangeAt(0);
-		const textNode = range.commonAncestorContainer;
-		if (textNode.parentNode === inputField || textNode.parentNode.parentNode === inputField) {
-			const text = textNode.textContent;
-			const start = text.slice(0, range.startOffset);
-			const end = text.slice(range.startOffset);
-			const currentWordFront = /\b(\w*)$/.exec(start);
-			const currentWordBack = /^(\w*)\b/.exec(end);
-			const possibleWord = `${currentWordFront ? currentWordFront[1] : ''}${
-				currentWordBack ? currentWordBack[1] : ''
-			}`;
-			if (possibleWord !== '') {
-				$lastWordTyped = possibleWord;
-			}
+	function findLastWord(target: EventTarget & HTMLTextAreaElement) {
+		const start = text.slice(0, target.selectionStart);
+		const end = text.slice(target.selectionEnd);
+		const currentWordFront = /\b(\w*)$/.exec(start);
+		const currentWordBack = /^(\w*)\b/.exec(end);
+		const possibleWord = `${currentWordFront ? currentWordFront[1] : ''}${
+			currentWordBack ? currentWordBack[1] : ''
+		}`;
+		if (possibleWord !== '') {
+			$lastWordTyped = possibleWord;
 		}
 	}
 
-	const onKeyUp: svelte.JSX.KeyboardEventHandler<HTMLDivElement> = (e) => {
-		$poem = { text: inputField.innerText, title: $poem.title };
-		findLastWord();
+	const onKeyUp: svelte.JSX.KeyboardEventHandler<HTMLTextAreaElement> = (e) => {
+		findLastWord(e.currentTarget);
 	};
 
 	function onBlur() {
 		inputIsFocused = false;
+		$poem = { ...$poem, text };
 	}
 
-	function onFocus() {
+	const onFocus: svelte.JSX.FocusEventHandler<HTMLTextAreaElement> = (e) => {
 		inputIsFocused = true;
-		findLastWord();
-	}
+		findLastWord(e.currentTarget);
+	};
 
 	function focusInput() {
 		if (!inputIsFocused) {
@@ -58,13 +54,13 @@
 		{/each}
 	</ol>
 	<div class="input-wrapper">
-		<div
+		<textarea
 			class="input"
-			contenteditable
 			bind:this={inputField}
 			on:blur={onBlur}
 			on:focus={onFocus}
 			on:keyup={onKeyUp}
+			bind:value={text}
 		/>
 	</div>
 	<div class="padding-right" />
