@@ -6,6 +6,10 @@
 	let inputIsFocused: boolean = false;
 	let text: string = $poem.text;
 
+	if (inputField) {
+		autoGrow(inputField);
+	}
+
 	const unsubscribe = poem.subscribe((p) => (text = p.text));
 	onDestroy(() => {
 		unsubscribe();
@@ -23,6 +27,18 @@
 			$lastWordTyped = possibleWord;
 		}
 	}
+
+	function autoGrow(element: HTMLTextAreaElement) {
+		element.style.height = '1px';
+		element.style.height = `${element.scrollHeight + 10}px`;
+		element.style.width = '1px';
+		element.style.width = `${element.scrollWidth}px`;
+	}
+
+	const onInput: svelte.JSX.KeyboardEventHandler<HTMLTextAreaElement> = (e) => {
+		autoGrow(e.currentTarget);
+		$poem = { ...$poem, text: e.currentTarget.value };
+	};
 
 	const onKeyUp: svelte.JSX.KeyboardEventHandler<HTMLTextAreaElement> = (e) => {
 		findLastWord(e.currentTarget);
@@ -60,6 +76,7 @@
 			on:blur={onBlur}
 			on:focus={onFocus}
 			on:keyup={onKeyUp}
+			on:input={onInput}
 			bind:value={text}
 		/>
 	</div>
@@ -121,6 +138,7 @@
 		font: var(--poem-content-font);
 		letter-spacing: 2px;
 		overflow: hidden;
+		resize: none;
 		white-space: nowrap;
 	}
 
