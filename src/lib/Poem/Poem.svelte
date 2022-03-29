@@ -1,6 +1,6 @@
 <script lang="ts">
-	export let author: string = '';
-	export let content: string = '';
+	export let author = '';
+	export let content = '';
 </script>
 
 <blockquote>
