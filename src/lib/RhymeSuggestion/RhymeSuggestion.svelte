@@ -4,7 +4,7 @@
 	import { onMount } from 'svelte';
 	import SuggestionWorker from './worker.ts?worker';
 
-	export let word: string = '';
+	export let word = '';
 
 	let isLoading = false;
 	let suggestedWords = [];

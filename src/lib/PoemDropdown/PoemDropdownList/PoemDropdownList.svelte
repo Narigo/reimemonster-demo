@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { Poem, poems } from '$lib/store/poem.store';
+	import type { Poem } from '$lib/store/poem.store';
+	import { poems } from '$lib/store/poem.store';
 	import { createEventDispatcher } from 'svelte';
 
 	const dispatch = createEventDispatcher();

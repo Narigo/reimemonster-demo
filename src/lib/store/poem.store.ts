@@ -1,6 +1,7 @@
 import { browser } from '$app/env';
 import { countSyllables } from 'reimemonster';
-import { derived, get, Writable, writable } from 'svelte/store';
+import type { Writable } from 'svelte/store';
+import { derived, get, writable } from 'svelte/store';
 
 export const lastWordTyped = writable('');
 

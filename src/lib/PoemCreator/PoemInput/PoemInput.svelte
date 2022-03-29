@@ -3,7 +3,7 @@
 	import { onDestroy } from 'svelte';
 
 	let inputField: HTMLTextAreaElement | null = null;
-	let inputIsFocused: boolean = false;
+	let inputIsFocused = false;
 	let text: string = $poem.text;
 
 	if (inputField) {
@@ -35,12 +35,12 @@
 		element.style.width = `${element.scrollWidth}px`;
 	}
 
-	const onInput: svelte.JSX.KeyboardEventHandler<HTMLTextAreaElement> = (e) => {
+	const onInput = (e: KeyboardEvent & { currentTarget: HTMLTextAreaElement }) => {
 		autoGrow(e.currentTarget);
 		$poem = { ...$poem, text: e.currentTarget.value };
 	};
 
-	const onKeyUp: svelte.JSX.KeyboardEventHandler<HTMLTextAreaElement> = (e) => {
+	const onKeyUp = (e: KeyboardEvent & { currentTarget: HTMLTextAreaElement }) => {
 		findLastWord(e.currentTarget);
 	};
 
@@ -49,7 +49,7 @@
 		$poem = { ...$poem, text };
 	}
 
-	const onFocus: svelte.JSX.FocusEventHandler<HTMLTextAreaElement> = (e) => {
+	const onFocus = (e: FocusEvent & { currentTarget: HTMLTextAreaElement }) => {
 		inputIsFocused = true;
 		findLastWord(e.currentTarget);
 	};
