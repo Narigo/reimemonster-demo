@@ -24,6 +24,7 @@
 		"lint:eslint": "eslint --ignore-path .gitignore .",
 		"lint:format": "prettier --ignore-path .gitignore --check --plugin-search-dir=. .",
 		"package": "svelte-kit package",
+		"prepare": "svelte-kit sync",
 		"preview": "svelte-kit preview",
 		"test": "npm run test:unit",
 		"test:integration:app": "PW_EXPERIMENTAL_TS_ESM=1 playwright test --config=playwright.config.ts",
