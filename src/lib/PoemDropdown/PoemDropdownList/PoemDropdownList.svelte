@@ -8,11 +8,18 @@
 	function loadPoem(poem: Poem) {
 		dispatch('load', poem);
 	}
+
+	function removePoem(poem: Poem) {
+		dispatch('remove', poem);
+	}
 </script>
 
 <ul>
 	{#each $poems as poem}
-		<li><button type="button" on:click={() => loadPoem(poem)}>{poem.title}</button></li>
+		<li>
+			<button type="button" on:click={() => loadPoem(poem)}>{poem.title}</button>
+			<button type="button" on:click={() => removePoem(poem)}>Delete</button>
+		</li>
 	{:else}
 		<li>No saved poems found!</li>
 	{/each}

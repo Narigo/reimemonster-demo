@@ -9,7 +9,12 @@
 
 	function loadPoem(event) {
 		$poem = event.detail;
-		console.log($poem);
+	}
+
+	function removePoem(event) {
+		const poem = event.detail;
+		const indexOfPoem = $poems.findIndex((p) => p === poem);
+		$poems = [...$poems.slice(0, indexOfPoem), ...$poems.slice(indexOfPoem + 1)];
 	}
 
 	function savePoem(event) {
@@ -22,7 +27,7 @@
 	<PoemTitle>
 		<div slot="right">
 			<PoemDropdown on:select>
-				<PoemDropdownList on:load={loadPoem} />
+				<PoemDropdownList on:load={loadPoem} on:remove={removePoem} />
 			</PoemDropdown>
 			<SavePoemButton on:save={savePoem} />
 		</div>
