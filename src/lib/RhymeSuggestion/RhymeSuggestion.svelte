@@ -56,6 +56,8 @@
 		<ul>
 			{#each suggestedWords as suggestion}
 				<li>{suggestion}</li>
+			{:else}
+				<li>Keine Wortvorschläge gefunden!</li>
 			{/each}
 		</ul>
 	{/if}
