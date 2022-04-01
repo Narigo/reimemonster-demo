@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Headline from '$lib/Headline/Headline.svelte';
+	import LoadingIpsum from '$lib/LoadingIpsum/LoadingIpsum.svelte';
 	import { wordRhymeStore } from '$lib/store/poem.store';
 	import { onMount } from 'svelte';
 	import SuggestionWorker from './worker.ts?worker';
@@ -51,7 +52,7 @@
 <Headline>{word}</Headline>
 <div>
 	{#if isLoading}
-		<span>loading ...</span>
+		<LoadingIpsum />
 	{:else if suggestedWords}
 		<ul>
 			{#each suggestedWords as suggestion}
@@ -64,19 +65,6 @@
 </div>
 
 <style>
-	span {
-		animation: loading forwards 500ms;
-	}
-
-	@keyframes loading {
-		0% {
-			opacity: 0;
-		}
-		100% {
-			opacity: 1;
-		}
-	}
-
 	ul {
 		display: flex;
 		flex-wrap: wrap;
