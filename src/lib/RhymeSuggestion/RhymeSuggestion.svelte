@@ -8,7 +8,7 @@
 	export let word = '';
 
 	let isLoading = false;
-	let suggestedWords = [];
+	let suggestedWords = null;
 
 	let backgroundWorker: Worker | null = null;
 	const timeToWait = 750;
