@@ -5,8 +5,8 @@
 
 	const dispatch = createEventDispatcher();
 
-	function loadPoem(poem: Poem) {
-		dispatch('load', poem);
+	function selectPoem(poem: Poem) {
+		dispatch('select', poem);
 	}
 
 	function removePoem(poem: Poem) {
@@ -17,7 +17,7 @@
 <ul>
 	{#each $poems as poem}
 		<li>
-			<button type="button" on:click={() => loadPoem(poem)}>{poem.title}</button>
+			<button type="button" on:click={() => selectPoem(poem)}>{poem.title}</button>
 			<button type="button" on:click={() => removePoem(poem)}>Delete</button>
 		</li>
 	{:else}

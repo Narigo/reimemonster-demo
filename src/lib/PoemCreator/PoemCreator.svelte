@@ -27,7 +27,7 @@
 	<PoemTitle>
 		<div slot="right">
 			<PoemDropdown on:select>
-				<PoemDropdownList on:load={loadPoem} on:remove={removePoem} />
+				<PoemDropdownList on:select={loadPoem} on:remove={removePoem} />
 			</PoemDropdown>
 			<SavePoemButton on:save={savePoem} />
 		</div>
