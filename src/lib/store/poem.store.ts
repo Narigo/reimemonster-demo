@@ -3,8 +3,6 @@ import { countSyllables } from 'reimemonster';
 import type { Readable, Writable } from 'svelte/store';
 import { derived, get, writable } from 'svelte/store';
 
-export const lastWordTyped = writable('');
-
 export type Poem = {
 	title: string;
 	text: string;
@@ -13,6 +11,7 @@ export type Poem = {
 export type SyllableInfo = { syllables: number; okay: boolean }[];
 
 export type PoemStore = {
+	lastWordTyped: Writable<string>;
 	poem: Writable<Poem>;
 	syllables: Readable<SyllableInfo>;
 };
@@ -54,6 +53,7 @@ export const poems: Writable<Poem[]> = (function () {
 })();
 
 export const createPoemStore = (): PoemStore => {
+	const lastWordTyped = writable('');
 	const poem = writable({ title: '', text: '' });
 	const syllables = derived(poem, ({ text }) => {
 		const acc: { syllables: number; okay: boolean }[] = [];
@@ -68,7 +68,7 @@ export const createPoemStore = (): PoemStore => {
 			});
 		return acc;
 	});
-	return { poem, syllables };
+	return { lastWordTyped, poem, syllables };
 };
 
 export const wordRhymeStore = writable({});
