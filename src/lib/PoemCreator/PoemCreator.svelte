@@ -2,10 +2,15 @@
 	import PoemDropdown from '$lib/PoemDropdown/PoemDropdown.svelte';
 	import PoemDropdownList from '$lib/PoemDropdown/PoemDropdownList/PoemDropdownList.svelte';
 	import PoemTitle from '$lib/PoemTitle/PoemTitle.svelte';
-	import { lastWordTyped, poem, poems } from '$lib/store/poem.store';
+	import { lastWordTyped, createPoemStore, poems, POEM_CONTEXT_KEY } from '$lib/store/poem.store';
 	import RhymeSuggestion from '$lib/RhymeSuggestion/RhymeSuggestion.svelte';
 	import PoemInput from './PoemInput/PoemInput.svelte';
 	import SavePoemButton from './SavePoemButton/SavePoemButton.svelte';
+	import { setContext } from 'svelte';
+
+	const poemStore = createPoemStore();
+	let { poem } = poemStore;
+	setContext(POEM_CONTEXT_KEY, poemStore);
 
 	function loadPoem(event) {
 		$poem = event.detail;

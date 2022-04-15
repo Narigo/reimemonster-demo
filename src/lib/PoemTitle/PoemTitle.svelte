@@ -1,7 +1,9 @@
 <script lang="ts">
-	import { poem } from '$lib/store/poem.store';
-	import { onDestroy } from 'svelte';
+	import { POEM_CONTEXT_KEY, type PoemStore } from '$lib/store/poem.store';
 
+	import { getContext, onDestroy } from 'svelte';
+
+	let { poem } = getContext<PoemStore>(POEM_CONTEXT_KEY);
 	let value: string = $poem.title;
 
 	$: $poem = { ...$poem, title: value };
