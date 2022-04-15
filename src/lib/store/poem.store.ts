@@ -1,6 +1,6 @@
 import { browser } from '$app/env';
 import { countSyllables } from 'reimemonster';
-import type { Writable } from 'svelte/store';
+import type { Readable, Writable } from 'svelte/store';
 import { derived, get, writable } from 'svelte/store';
 
 export const lastWordTyped = writable('');
@@ -9,6 +9,15 @@ export type Poem = {
 	title: string;
 	text: string;
 };
+
+export type SyllableInfo = { syllables: number; okay: boolean }[];
+
+export type PoemStore = {
+	poem: Writable<Poem>;
+	syllables: Readable<SyllableInfo>;
+};
+
+export const POEM_CONTEXT_KEY = 'poem';
 
 export const poems: Writable<Poem[]> = (function () {
 	const key = 'poems';
@@ -44,20 +53,22 @@ export const poems: Writable<Poem[]> = (function () {
 	};
 })();
 
-export const poem = writable({ title: '', text: '' });
-
-export const syllables = derived(poem, ({ text }) => {
-	const acc: { syllables: number; okay: boolean }[] = [];
-	let previous = 0;
-	text
-		.trim()
-		.split(/\n/)
-		.forEach((element) => {
-			const syllables = countSyllables(element);
-			acc.push({ syllables, okay: previous === 0 || previous === syllables });
-			previous = syllables;
-		});
-	return acc;
-});
+export const createPoemStore = (): PoemStore => {
+	const poem = writable({ title: '', text: '' });
+	const syllables = derived(poem, ({ text }) => {
+		const acc: { syllables: number; okay: boolean }[] = [];
+		let previous = 0;
+		text
+			.trim()
+			.split(/\n/)
+			.forEach((element) => {
+				const syllables = countSyllables(element);
+				acc.push({ syllables, okay: previous === 0 || previous === syllables });
+				previous = syllables;
+			});
+		return acc;
+	});
+	return { poem, syllables };
+};
 
 export const wordRhymeStore = writable({});

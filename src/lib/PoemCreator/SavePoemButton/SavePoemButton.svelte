@@ -1,8 +1,10 @@
 <script lang="ts">
-	import { poem } from '$lib/store/poem.store';
-	import { createEventDispatcher } from 'svelte';
+	import { type PoemStore, POEM_CONTEXT_KEY } from '$lib/store/poem.store';
+
+	import { createEventDispatcher, getContext } from 'svelte';
 
 	const dispatch = createEventDispatcher();
+	const { poem } = getContext<PoemStore>(POEM_CONTEXT_KEY);
 
 	function savePoem() {
 		dispatch('save', $poem);

@@ -1,9 +1,11 @@
 <script lang="ts">
-	import { lastWordTyped, poem, syllables } from '$lib/store/poem.store';
-	import { onDestroy } from 'svelte';
+	import { lastWordTyped, POEM_CONTEXT_KEY, type PoemStore } from '$lib/store/poem.store';
+	import { getContext, onDestroy } from 'svelte';
 
 	let inputField: HTMLTextAreaElement | null = null;
 	let inputIsFocused = false;
+
+	let { poem, syllables } = getContext<PoemStore>(POEM_CONTEXT_KEY);
 	let text: string = $poem.text;
 
 	if (inputField) {
