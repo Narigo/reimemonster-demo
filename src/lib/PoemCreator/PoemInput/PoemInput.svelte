@@ -51,14 +51,19 @@
 		$poem = { ...$poem, text };
 	}
 
-	const onFocus = (e: FocusEvent & { currentTarget: HTMLTextAreaElement }) => {
+	const onClick = (e: MouseEvent & { currentTarget: HTMLTextAreaElement }) => {
 		inputIsFocused = true;
 		findLastWord(e.currentTarget);
+	};
+
+	const onFocus = (_e: FocusEvent & { currentTarget: HTMLTextAreaElement }) => {
+		inputIsFocused = true;
 	};
 
 	function focusInput() {
 		if (!inputIsFocused) {
 			inputField.focus();
+			findLastWord(inputField);
 		}
 	}
 </script>
@@ -76,6 +81,7 @@
 			class="input"
 			bind:this={inputField}
 			on:blur={onBlur}
+			on:click={onClick}
 			on:focus={onFocus}
 			on:keyup={onKeyUp}
 			on:input={onInput}
